@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+}
+
+.snakeCell {
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+  border: 2px solid black;
+  text-align: center;
+}
+
+.highlited {
+  background-color: red;
+}
+
+.apple {
+  background-color: green;
+}
