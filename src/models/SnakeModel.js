@@ -1,6 +1,9 @@
+import Utils from '../services/utils';
+
 export default class SnakeModel {
 
     snakeCells;
+    appleCell;
     direction;
 
     constructor(rows, cols) {
@@ -10,6 +13,7 @@ export default class SnakeModel {
         this.snakeCells = [];
 
         this.setInitialCell();
+        this.setAppleCell();
     }
 
     setDirection(direction) {
@@ -22,11 +26,24 @@ export default class SnakeModel {
         return this.snakeCells;
     }
 
+    getAppleCell() {
+        return this.appleCell;
+    }
+
     setInitialCell() {
         this.snakeCells.push( {
-            row: this.getRandomIndex(this.rowNum),
-            col: this.getRandomIndex(this.colNum)
+            row: Utils.getRandomIndex(this.rowNum / 3, this.rowNum * 2 / 3),
+            col: Utils.getRandomIndex(this.colNum / 3, this.colNum * 2 / 3)
         });
+    }
+
+    setAppleCell() {
+ //       while(Utils.containsCell(this.snakeCells, this.appleCell)) {
+            this.appleCell = {
+                row: Utils.getRandomIndex(0, this.rowNum - 1),
+                col: Utils.getRandomIndex(0, this.colNum - 1)
+            }
+//        }
     }
 
     moveSnake() {
@@ -52,7 +69,4 @@ export default class SnakeModel {
        this.snakeCells.unshift(newHeadCell);
      }
 
-    getRandomIndex(max) {
-        return Math.floor(max * Math.random());
-    }
 }

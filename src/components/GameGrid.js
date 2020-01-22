@@ -44,15 +44,25 @@ class GameGrid extends Component {
         return Utils.containsCell(this.state.snakeCells, {row: row, col: col});
     }
 
+    isAppleCell(row, col) {
+        return Utils.doCellsMatch(this.snakeModel.getAppleCell(), {row: row, col: col})
+    }
+
     createGrid() {
         let table = []
 
         for (let i = 0; i < this.props.rows; i++) {
             let children = [];
             for (let j = 0; j < this.props.cols; j++) {
-                const cellType = (this.isSnakeCell(i, j) ? 'snake' : '');
+                let cellType;
+                if(this.isSnakeCell(i, j)) {
+                    cellType = 'snake';
+                } else if (this.isAppleCell(i, j)) {
+                    cellType = 'apple'
+                }
+
                 const keyString = i + '' + j;
-                 children.push(<td className='gridCell' key={keyString}><GridCell type={cellType} /></td>);
+                children.push(<td className='gridCell' key={keyString}><GridCell type={cellType} /></td>);
             }
             table.push(<tr key={i}>{children}</tr>)
         }
