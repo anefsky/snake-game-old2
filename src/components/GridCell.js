@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
 
 class GridCell extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
+        const classNames = this.props.type;
         return (
-            <div>
+            <div className={classNames}>
            </div>
         );
     }

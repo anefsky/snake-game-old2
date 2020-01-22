@@ -35,7 +35,6 @@ export default class SnakeModel {
     }
 
     growSnake() {
-        console.log('in growSnake, direction: ', this.direction);
         let row = this.snakeCells[0].row;
         let col = this.snakeCells[0].col;
         switch (this.direction) {

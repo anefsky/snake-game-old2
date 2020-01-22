@@ -40,16 +40,21 @@ class GameGrid extends Component {
         }, this.props.timeBetweenMovesMs);
     }
 
+    isSnakeCell(row, col) {
+        return Utils.containsCell(this.state.snakeCells, {row: row, col: col});
+    }
+
     createGrid() {
         let table = []
 
         for (let i = 0; i < this.props.rows; i++) {
             let children = [];
             for (let j = 0; j < this.props.cols; j++) {
-               const classNamesString = 'snakeCell' + (Utils.containsCell(this.state.snakeCells, {row: i, col: j}) ? ' highlited' : '');
-                children.push(<td className={classNamesString}><GridCell /></td>);
+                const cellType = (this.isSnakeCell(i, j) ? 'snake' : '');
+                const keyString = i + '' + j;
+                 children.push(<td className='gridCell' key={keyString}><GridCell type={cellType} /></td>);
             }
-            table.push(<tr>{children}</tr>)
+            table.push(<tr key={i}>{children}</tr>)
         }
         return table;
     }
@@ -58,7 +63,9 @@ class GameGrid extends Component {
     render() {
         return (
             <table>
-                {this.createGrid()}
+                <tbody>
+                    {this.createGrid()}
+                </tbody>
             </table>
         )
     }

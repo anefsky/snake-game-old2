@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.snakeCell {
+.gridCell {
   height: 50px;
   width: 50px;
   margin: 5px;
@@ -10,10 +10,14 @@
   text-align: center;
 }
 
-.highlited {
-  background-color: red;
+.snake {
+  width: 100%;
+  height: 100%;
+  background-color: green;
 }
 
 .apple {
-  background-color: green;
+  width: 100%;
+  height: 100%;
+  background-color: red;
 }

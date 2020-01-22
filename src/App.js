@@ -10,10 +10,6 @@ class App extends Component {
   cols = 10;
   timeBetweenMovesMs = 500;
 
-  constructor() {
-    super();
-  }
-
   render() {
     return (
       <div>
