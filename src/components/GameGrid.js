@@ -52,8 +52,7 @@ export default class GameGrid extends Component {
             }
             
             if(this.state.gameOver) { 
-                clearInterval(interval); 
-                alert('game over!');
+                alert('game over, score: ' + this.state.snakeCells.length);
             } else {
                 this.setState(
                     {   
