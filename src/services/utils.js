@@ -6,7 +6,7 @@ export default class Utils {
     }
 
     static containsCell(arrayOfCells, cell) {
-        if(arrayOfCells == undefined || cell == undefined) return false;
+        if(arrayOfCells === undefined || cell === undefined) return true;
         for (let i = 0; i < arrayOfCells.length; i++) {
             if (Utils.doCellsMatch(arrayOfCells[i], cell)) {
                 return true;
@@ -17,6 +17,11 @@ export default class Utils {
 
     static getRandomIndex(min, max) {
         return Math.floor(min + ((max - min) * Math.random()));
+    }
+
+    static chooseRandomString(stringsArray) {
+        const randomIndex = Utils.getRandomIndex(0, stringsArray.length);
+        return stringsArray[randomIndex];
     }
 
 }

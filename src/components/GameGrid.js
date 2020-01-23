@@ -30,7 +30,8 @@ class GameGrid extends Component {
     }
 
     handleInterval() {
-        this.snakeModel.setDirection('ArrowRight'); // remove
+        const initDirection = Utils.chooseRandomString(['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight']);
+        this.snakeModel.setDirection(initDirection);
 
         setInterval(() => {
             this.snakeModel.growSnake();
