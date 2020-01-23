@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class GridCell extends Component {
+export default class GridCell extends Component {
     render() {
         const classNames = this.props.type;
         return (
@@ -9,5 +9,3 @@ class GridCell extends Component {
         );
     }
 }
-
-export default GridCell;

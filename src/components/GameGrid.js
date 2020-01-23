@@ -3,12 +3,15 @@ import SnakeModel from '../models/SnakeModel';
 import GridCell from './GridCell';
 import Utils from '../services/utils';
 
-class GameGrid extends Component {
+export default class GameGrid extends Component {
 
     snakeModel;
 
     constructor(props) {
         super(props);
+
+        this.changeDirection = this.changeDirection.bind(this);
+        document.onkeydown = this.changeDirection;
 
         this.snakeModel = new SnakeModel(this.props.rows, this.props.cols);
 
@@ -18,27 +21,43 @@ class GameGrid extends Component {
             gameOver: false
         };
 
-        this.changeDirection = this.changeDirection.bind(this);
-        document.onkeydown = this.changeDirection;
-        this.handleInterval();
+
+        this.startGame();
     }
 
     changeDirection(event) {
+        console.log('in changeDirection, event: ', event);
         this.snakeModel.setDirection(event.code);
     }
 
-    handleInterval() {
-        const initDirection = Utils.chooseRandomString(['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight']);
-        this.snakeModel.setDirection(initDirection);
+    startGame() {
 
-        setInterval(() => {
-            this.snakeModel.growSnake();
-            this.setState(
-                {   
-                    snakeCells: this.snakeModel.getSnakeCells(),
-                    appleCell: this.snakeModel.getAppleCell()
-                }
-            );
+        let interval = setInterval(() => {
+            this.snakeModel.setNewHeadCell();
+            // if(this.snakeModel.isMoveOffBoard() || this.snakeModel.isMoveOnSnakeBody()) {
+                // this.setState( {
+                    // gameOver: true
+                // });
+            // }
+            if(this.snakeModel.isMoveToEatApple()) {
+                this.snakeModel.growSnake();
+                this.snakeModel.moveApple();
+            } else {
+                this.snakeModel.moveSnake();
+            }
+            
+            // this.snakeModel.moveApple();
+            if(this.state.gameOver) { 
+                console.log('*** game over');
+                clearInterval(interval); 
+            } else {
+                this.setState(
+                    {   
+                        snakeCells: this.snakeModel.getSnakeCells(),
+                        appleCell: this.snakeModel.getAppleCell()
+                    }
+                );
+            }
         }, this.props.timeBetweenMovesMs);
     }
 
@@ -71,7 +90,6 @@ class GameGrid extends Component {
         return table;
     }
 
-
     render() {
         return (
             <table>
@@ -83,5 +101,3 @@ class GameGrid extends Component {
     }
 
 }
-
-export default GameGrid;

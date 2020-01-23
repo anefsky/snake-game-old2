@@ -5,6 +5,7 @@ export default class SnakeModel {
     snakeCells;
     appleCell;
     direction;
+    headCell;
 
     constructor(rows, cols) {
         this.rowNum = rows;
@@ -31,10 +32,14 @@ export default class SnakeModel {
     }
 
     setInitialCell() {
-        this.snakeCells.push( {
+        const initDirection = Utils.chooseRandomString(['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight']);
+        this.setDirection(initDirection);
+    
+        this.headCell = {
             row: Utils.getRandomIndex(this.rowNum / 3, this.rowNum * 2 / 3),
             col: Utils.getRandomIndex(this.colNum / 3, this.colNum * 2 / 3)
-        });
+        };
+        this.snakeCells.push(this.headCell);
     }
 
     setAppleCell() {
@@ -54,6 +59,10 @@ export default class SnakeModel {
     }
 
     growSnake() {
+       this.snakeCells.unshift(this.headCell);
+     }
+
+     setNewHeadCell() {
         let row = this.snakeCells[0].row;
         let col = this.snakeCells[0].col;
         switch (this.direction) {
@@ -68,21 +77,30 @@ export default class SnakeModel {
             row: row,
             col: col
         };
-       this.snakeCells.unshift(newHeadCell);
+        this.headCell = newHeadCell;
      }
 
 /////////////////////
 
      isMoveOffBoard() {
-
+         return this.headCell.row >= this.rowNum
+         || this.headCell.col >= this.colNum
+         || this.headCell.row >= 0
+         || this.headCell.col >= 0;
      }
 
      isMoveToEatApple() {
-
+        return Utils.doCellsMatch(this.headCell, this.appleCell);
      }
 
      isMoveOnSnakeBody() {
+        // check if new head same as any snake part except first or last cell
+        const snakeWithNoHeadOrTail = this.snakeCells.slice(1, -1);
+        return Utils.containsCell(snakeWithNoHeadOrTail, this.appleCell);
+     }
 
+     moveApple() {
+        this.setAppleCell();
      }
 
 }
