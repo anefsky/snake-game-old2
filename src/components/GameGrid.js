@@ -52,8 +52,8 @@ export default class GameGrid extends Component {
             }
             
             if(this.state.gameOver) { 
-                console.log('*** game over');
-                // clearInterval(interval); 
+                clearInterval(interval); 
+                alert('game over!');
             } else {
                 this.setState(
                     {   
