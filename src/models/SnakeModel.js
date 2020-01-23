@@ -38,12 +38,14 @@ export default class SnakeModel {
     }
 
     setAppleCell() {
- //       while(Utils.containsCell(this.snakeCells, this.appleCell)) {
+        let firstTry = true
+        while(firstTry || Utils.containsCell(this.snakeCells, this.appleCell)) {
             this.appleCell = {
                 row: Utils.getRandomIndex(0, this.rowNum - 1),
                 col: Utils.getRandomIndex(0, this.colNum - 1)
             }
-//        }
+            firstTry = false;
+       }
     }
 
     moveSnake() {
@@ -67,6 +69,20 @@ export default class SnakeModel {
             col: col
         };
        this.snakeCells.unshift(newHeadCell);
+     }
+
+/////////////////////
+
+     isMoveOffBoard() {
+
+     }
+
+     isMoveToEatApple() {
+
+     }
+
+     isMoveOnSnakeBody() {
+
      }
 
 }

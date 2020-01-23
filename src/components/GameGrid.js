@@ -13,16 +13,14 @@ class GameGrid extends Component {
         this.snakeModel = new SnakeModel(this.props.rows, this.props.cols);
 
         this.state = {
-            snakeCells: []
+            snakeCells: [],
+            appleCell: {},
+            gameOver: false
         };
 
         this.changeDirection = this.changeDirection.bind(this);
         document.onkeydown = this.changeDirection;
         this.handleInterval();
-    }
-
-    getHeadCell() {
-        return this.snakeModel[0];
     }
 
     changeDirection(event) {
@@ -36,7 +34,10 @@ class GameGrid extends Component {
         setInterval(() => {
             this.snakeModel.growSnake();
             this.setState(
-                { snakeCells: this.snakeModel.getSnakeCells() }
+                {   
+                    snakeCells: this.snakeModel.getSnakeCells(),
+                    appleCell: this.snakeModel.getAppleCell()
+                }
             );
         }, this.props.timeBetweenMovesMs);
     }
@@ -46,7 +47,7 @@ class GameGrid extends Component {
     }
 
     isAppleCell(row, col) {
-        return Utils.doCellsMatch(this.snakeModel.getAppleCell(), {row: row, col: col})
+        return Utils.doCellsMatch(this.state.appleCell, {row: row, col: col})
     }
 
     createGrid() {
