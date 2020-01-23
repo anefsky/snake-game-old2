@@ -26,19 +26,24 @@ export default class GameGrid extends Component {
     }
 
     changeDirection(event) {
-        console.log('in changeDirection, event: ', event);
         this.snakeModel.setDirection(event.code);
     }
 
     startGame() {
-
+        let isFirstRun = true;
         let interval = setInterval(() => {
-            this.snakeModel.setNewHeadCell();
-            // if(this.snakeModel.isMoveOffBoard() || this.snakeModel.isMoveOnSnakeBody()) {
-                // this.setState( {
-                    // gameOver: true
-                // });
-            // }
+            if(isFirstRun) {
+                isFirstRun = false;
+            } else {
+                this.snakeModel.setNewHeadCell();
+            }
+             
+            if(this.snakeModel.isMoveOffBoard() || this.snakeModel.isMoveOnSnakeBody()) {
+                this.setState( {
+                    gameOver: true
+                });
+                clearInterval(interval);
+            }
             if(this.snakeModel.isMoveToEatApple()) {
                 this.snakeModel.growSnake();
                 this.snakeModel.moveApple();
@@ -46,10 +51,9 @@ export default class GameGrid extends Component {
                 this.snakeModel.moveSnake();
             }
             
-            // this.snakeModel.moveApple();
             if(this.state.gameOver) { 
                 console.log('*** game over');
-                clearInterval(interval); 
+                // clearInterval(interval); 
             } else {
                 this.setState(
                     {   

@@ -80,13 +80,11 @@ export default class SnakeModel {
         this.headCell = newHeadCell;
      }
 
-/////////////////////
-
      isMoveOffBoard() {
          return this.headCell.row >= this.rowNum
          || this.headCell.col >= this.colNum
-         || this.headCell.row >= 0
-         || this.headCell.col >= 0;
+         || this.headCell.row < 0
+         || this.headCell.col < 0;
      }
 
      isMoveToEatApple() {
@@ -96,7 +94,7 @@ export default class SnakeModel {
      isMoveOnSnakeBody() {
         // check if new head same as any snake part except first or last cell
         const snakeWithNoHeadOrTail = this.snakeCells.slice(1, -1);
-        return Utils.containsCell(snakeWithNoHeadOrTail, this.appleCell);
+        return Utils.containsCell(snakeWithNoHeadOrTail, this.headCell);
      }
 
      moveApple() {

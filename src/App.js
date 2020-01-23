@@ -8,7 +8,7 @@ class App extends Component {
   snakeModel;
   rows = 10;
   cols = 10;
-  timeBetweenMovesMs = 500;
+  timeBetweenMovesMs = 250;
 
   render() {
     return (
