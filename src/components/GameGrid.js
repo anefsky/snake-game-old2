@@ -18,12 +18,14 @@ export default class GameGrid extends Component {
         this.state = {
             snakeCells: [],
             appleCell: {},
-            gameOver: false,
-            gameStarted: this.props.isGameStarted
+            gameOver: false
         };
+    }
 
-
-        this.startGame();
+    componentDidUpdate(prevProps) {
+        if(!prevProps.isGameStarted && this.props.isGameStarted) {
+            this.startGame();
+        } 
     }
 
     changeDirection(event) {
@@ -102,7 +104,6 @@ export default class GameGrid extends Component {
                         {this.createGrid()}
                     </tbody>
                 </table>
-                <p>{this.props.isGameStarted ? 'started' : 'not started'}</p>
             </div>
         )
     }
