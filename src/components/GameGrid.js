@@ -18,7 +18,8 @@ export default class GameGrid extends Component {
         this.state = {
             snakeCells: [],
             appleCell: {},
-            gameOver: false
+            gameOver: false,
+            gameStarted: this.props.isGameStarted
         };
 
 
@@ -95,11 +96,14 @@ export default class GameGrid extends Component {
 
     render() {
         return (
-            <table>
-                <tbody>
-                    {this.createGrid()}
-                </tbody>
-            </table>
+            <div>
+                <table>
+                    <tbody>
+                        {this.createGrid()}
+                    </tbody>
+                </table>
+                <p>{this.props.isGameStarted ? 'started' : 'not started'}</p>
+            </div>
         )
     }
 

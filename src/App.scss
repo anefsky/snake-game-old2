@@ -1,13 +1,17 @@
-.App {
-  text-align: center;
+.app {
+  width: 100%;
+  margin-top: 50px;
+
+  .controls {
+    margin-top: 25px;
+  }
 }
 
 .gridCell {
   height: 50px;
   width: 50px;
   margin: 5px;
-  border: 2px solid black;
-  text-align: center;
+  border: 2px solid #ccc;
 }
 
 .snake {
