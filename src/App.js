@@ -25,6 +25,12 @@ class App extends Component {
     });
   }
 
+  doGameEnded = () => {
+    this.setState( {
+      gameStarted: false
+    });
+  }
+
   render() {
     return (
       <div className="app">
@@ -33,6 +39,7 @@ class App extends Component {
           cols={this.cols}
           timeBetweenMovesMs={this.timeBetweenMovesMs}
           isGameStarted={this.state.gameStarted}
+          gameEnded={this.doGameEnded}
         />
         <Controls
           startGame={this.doStart}

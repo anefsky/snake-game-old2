@@ -11,16 +11,18 @@ export default class SnakeModel {
         this.rowNum = rows;
         this.colNum = cols;
 
-        this.snakeCells = [];
+        this.gameInit();
+    }
 
+    gameInit() {
+        this.snakeCells = [];
         this.setInitialCell();
         this.setAppleCell();
     }
 
     reset() {
-        this.snakeCell = [];
-        // this.appleCell = null;
-    }
+        this.gameInit();
+   }
 
     setDirection(direction) {
         if((['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].indexOf(direction)) !== -1) {
@@ -86,6 +88,7 @@ export default class SnakeModel {
      }
 
      isMoveOffBoard() {
+         if(this.snakeCells.length === 0) return false; // after reset
          return this.headCell.row >= this.rowNum
          || this.headCell.col >= this.colNum
          || this.headCell.row < 0

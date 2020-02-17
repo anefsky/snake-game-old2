@@ -35,7 +35,6 @@ export default class GameGrid extends Component {
     }
 
     resetGame() {
-        console.log('in resetGame')
         this.snakeModel.reset();
         this.setState({
             snakeCells: [],
@@ -50,18 +49,17 @@ export default class GameGrid extends Component {
         clearInterval(this.interval);
         alert('game over, score: ' + this.state.snakeCells.length);
         this.resetGame();
+        this.props.gameEnded();
     }
 
     startGame() {
-        console.log('in startGame');
         let isFirstRun = true;
         this.interval = setInterval(() => {
             if(isFirstRun) {
                 isFirstRun = false;
             } else {
                 this.snakeModel.setNewHeadCell();
-            }
-             
+            }            
             if(this.snakeModel.isMoveOffBoard() || this.snakeModel.isMoveOnSnakeBody()) {
                 this.endGame();
             } else {
