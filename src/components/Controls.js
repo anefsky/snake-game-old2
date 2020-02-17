@@ -14,7 +14,10 @@ class Controls extends Component {
     render() {
         return (
             <div className="controls">
-                <button onClick={this.handleStartClick}>Start Game</button>
+                <button 
+                    onClick={this.handleStartClick}
+                    disabled={this.props.startButtonDisabled}
+                >Start Game</button>
             </div>
         )
     }

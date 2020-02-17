@@ -26,5 +26,15 @@
       background-color: red;
     }
   }
+
+  button {
+    cursor: pointer;
+
+    &:disabled {
+      cursor: default;
+      color: #ccc;
+    }
+  }
+
 }
 

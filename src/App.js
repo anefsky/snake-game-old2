@@ -43,6 +43,7 @@ class App extends Component {
         />
         <Controls
           startGame={this.doStart}
+          startButtonDisabled={this.state.gameStarted}
         >
         </Controls>
 
