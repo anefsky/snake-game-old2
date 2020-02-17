@@ -17,6 +17,10 @@ export default class SnakeModel {
         this.setAppleCell();
     }
 
+    reset() {
+        this.snakeCell = [];
+    }
+
     setDirection(direction) {
         if((['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].indexOf(direction)) !== -1) {
             this.direction = direction;

@@ -6,23 +6,25 @@
   .controls {
     margin-top: 25px;
   }
+
+  .gridCell {
+    height: 50px;
+    width: 50px;
+    margin: 5px;
+    border: 2px solid #ccc;
+  }
+
+  .cellContent {
+    width: 100%;
+    height: 100%;
+
+    &.snake {
+      background-color: green;
+    }
+
+    &.apple {
+      background-color: red;
+    }
+  }
 }
 
-.gridCell {
-  height: 50px;
-  width: 50px;
-  margin: 5px;
-  border: 2px solid #ccc;
-}
-
-.snake {
-  width: 100%;
-  height: 100%;
-  background-color: green;
-}
-
-.apple {
-  width: 100%;
-  height: 100%;
-  background-color: red;
-}

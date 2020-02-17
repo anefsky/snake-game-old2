@@ -29,7 +29,16 @@ export default class GameGrid extends Component {
     }
 
     changeDirection(event) {
+        event.preventDefault();  // stop grid from repositioning
         this.snakeModel.setDirection(event.code);
+    }
+
+    resetGame() {
+        this.snakeModel.reset();
+        // this.setState({
+        //     snakeCells: [],
+        //     appleCell: {}
+        // });
     }
 
     startGame() {
@@ -46,6 +55,7 @@ export default class GameGrid extends Component {
                     gameOver: true
                 });
                 clearInterval(interval);
+                this.resetGame();
             }
             if(this.snakeModel.isMoveToEatApple()) {
                 this.snakeModel.growSnake();
