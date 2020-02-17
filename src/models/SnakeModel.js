@@ -19,6 +19,7 @@ export default class SnakeModel {
 
     reset() {
         this.snakeCell = [];
+        // this.appleCell = null;
     }
 
     setDirection(direction) {

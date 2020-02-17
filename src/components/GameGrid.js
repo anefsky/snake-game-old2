@@ -6,6 +6,7 @@ import Utils from '../services/utils';
 export default class GameGrid extends Component {
 
     snakeModel;
+    interval;
 
     constructor(props) {
         super(props);
@@ -34,16 +35,27 @@ export default class GameGrid extends Component {
     }
 
     resetGame() {
+        console.log('in resetGame')
         this.snakeModel.reset();
-        // this.setState({
-        //     snakeCells: [],
-        //     appleCell: {}
-        // });
+        this.setState({
+            snakeCells: [],
+            appleCell: {}
+        });
+    }
+
+    endGame() {
+        this.setState( {
+            gameOver: true
+        });
+        clearInterval(this.interval);
+        alert('game over, score: ' + this.state.snakeCells.length);
+        this.resetGame();
     }
 
     startGame() {
+        console.log('in startGame');
         let isFirstRun = true;
-        let interval = setInterval(() => {
+        this.interval = setInterval(() => {
             if(isFirstRun) {
                 isFirstRun = false;
             } else {
@@ -51,22 +63,15 @@ export default class GameGrid extends Component {
             }
              
             if(this.snakeModel.isMoveOffBoard() || this.snakeModel.isMoveOnSnakeBody()) {
-                this.setState( {
-                    gameOver: true
-                });
-                clearInterval(interval);
-                this.resetGame();
-            }
-            if(this.snakeModel.isMoveToEatApple()) {
-                this.snakeModel.growSnake();
-                this.snakeModel.moveApple();
+                this.endGame();
             } else {
-                this.snakeModel.moveSnake();
-            }
-            
-            if(this.state.gameOver) { 
-                alert('game over, score: ' + this.state.snakeCells.length);
-            } else {
+                if(this.snakeModel.isMoveToEatApple()) {
+                    this.snakeModel.growSnake();
+                    this.snakeModel.moveApple();
+                } else {
+                    this.snakeModel.moveSnake();
+                }
+                
                 this.setState(
                     {   
                         snakeCells: this.snakeModel.getSnakeCells(),
