@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Button from 'react-bootstrap/Button';
 
 class Controls extends Component {
 
@@ -14,10 +15,12 @@ class Controls extends Component {
     render() {
         return (
             <div className="controls">
-                <button 
+                <Button 
                     onClick={this.handleStartClick}
                     disabled={this.props.startButtonDisabled}
-                >Start Game</button>
+                >
+                    Start Game
+                </Button>
             </div>
         )
     }
