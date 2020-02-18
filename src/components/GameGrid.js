@@ -95,14 +95,24 @@ export default class GameGrid extends Component {
             let children = [];
             for (let j = 0; j < this.props.cols; j++) {
                 let cellType;
+                let position;
                 if(this.isSnakeCell(i, j)) {
                     cellType = 'snake';
+                    position = this.snakeModel.getSnakeSegmentPosition(i, j);
                 } else if (this.isAppleCell(i, j)) {
-                    cellType = 'apple'
+                    cellType = 'apple';
+                    position = 0;
                 }
 
                 const keyString = i + '' + j;
-                children.push(<td className='gridCell' key={keyString}><GridCell type={cellType} /></td>);
+                children.push(
+                    <td className='gridCell' key={keyString}>
+                        <GridCell 
+                            type={cellType} 
+                            position={position}
+                        />
+                    </td>
+                );
             }
             table.push(<tr key={i}>{children}</tr>)
         }
