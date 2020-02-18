@@ -3,6 +3,7 @@ import './App.scss';
 
 import GameGrid from './components/GameGrid';
 import Controls from './components/Controls';
+// import EndOfGameResponse from './components/EndOfGameResponse';
 
 class App extends Component {
 
@@ -46,7 +47,11 @@ class App extends Component {
           startButtonDisabled={this.state.gameStarted}
         >
         </Controls>
-
+{/* 
+        <EndOfGameResponse>
+          
+        </EndOfGameResponse>
+ */}
       </div>
     );
   }

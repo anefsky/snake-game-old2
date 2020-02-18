@@ -2,11 +2,10 @@ import React, {Component} from 'react';
 import Button from 'react-bootstrap/Button';
 
 class Controls extends Component {
-
     constructor(props) {
         super(props);
         this.handleStartClick = this.handleStartClick.bind(this);
-    }
+   }
 
     handleStartClick() {
         this.props.startGame();
@@ -21,6 +20,7 @@ class Controls extends Component {
                 >
                     Start Game
                 </Button>
+            
             </div>
         )
     }
