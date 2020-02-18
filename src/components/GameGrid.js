@@ -111,7 +111,7 @@ export default class GameGrid extends Component {
 
     render() {
         return (
-            <div>
+            <div className="gameGrid">
                 <table>
                     <tbody>
                         {this.createGrid()}

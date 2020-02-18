@@ -1,15 +1,23 @@
+$cell-size: 50px;
+
 .app {
   width: 100%;
-  margin-top: 50px;
-  margin-left: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .gameGrid {
+    background-color: yellow;
+    margin-top: 25px;
+  }
 
   .controls {
     margin-top: 25px;
   }
 
   .gridCell {
-    height: 50px;
-    width: 50px;
+    height: $cell-size;
+    width: $cell-size;
     margin: 5px;
     border: 2px solid #ccc;
   }
@@ -23,7 +31,9 @@
     }
 
     &.apple {
-      background-color: red;
+      background-image: url('images/apple.png');
+      background-repeat: no-repeat;
+      background-size: $cell-size $cell-size;
     }
   }
 

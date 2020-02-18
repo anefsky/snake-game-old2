@@ -1,6 +1,6 @@
 {
   "name": "snake-game",
-  "homepage": "http://andrewnefsky.com/projects/snake-game-2/build/",
+  "homepage": "http://andrewnefsky.com/projects/snake-game/build/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
