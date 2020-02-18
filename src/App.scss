@@ -1,4 +1,5 @@
 $cell-size: 50px;
+$apple-size: 45px;
 
 .app {
   width: 100%;
@@ -33,7 +34,7 @@ $cell-size: 50px;
     &.apple {
       background-image: url('images/apple.png');
       background-repeat: no-repeat;
-      background-size: $cell-size $cell-size;
+      background-size: $apple-size $apple-size;
     }
   }
 

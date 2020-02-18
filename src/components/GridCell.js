@@ -5,7 +5,7 @@ export default class GridCell extends Component {
         return (
             <div 
                 className={[this.props.type, 'cellContent'].join(' ')}
-                style={{opacity: Math.max( 20, (100 - (5 * this.props.position))) + '%'}}
+                style={{opacity: Math.max( 20, (100 - (10 * this.props.position))) + '%'}}
             >
            </div>
         );
