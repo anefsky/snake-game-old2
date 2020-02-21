@@ -3,6 +3,7 @@ import './App.scss';
 
 import GameGrid from './components/GameGrid';
 import Controls from './components/Controls';
+import StatusDisplay from './components/StatusDisplay';
 
 class App extends Component {
 
@@ -14,9 +15,13 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      gameStarted: false
+      gameStarted: false,
+      score: 0
     };
+  }
 
+  getScoreFunction = (score) => {
+    this.setState( {score: score });
   }
 
   doStart = () => {
@@ -40,12 +45,20 @@ class App extends Component {
           timeBetweenMovesMs={this.timeBetweenMovesMs}
           isGameStarted={this.state.gameStarted}
           gameEnded={this.doGameEnded}
+          getScoreCallback={this.getScoreFunction}
         />
-        <Controls
-          startGame={this.doStart}
-          startButtonDisabled={this.state.gameStarted}
-        >
-        </Controls>
+        <footer className='footer'>
+          <Controls
+            startGame={this.doStart}
+            startButtonDisabled={this.state.gameStarted}
+          >
+          </Controls>
+          <StatusDisplay
+            score={this.state.score}
+            gameActive={this.state.gameStarted}
+          >
+          </StatusDisplay>
+        </footer>
       </div>
     );
   }

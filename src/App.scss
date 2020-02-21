@@ -12,15 +12,10 @@ $apple-size: 45px;
     margin-top: 25px;
   }
 
-  .controls {
-    margin-top: 25px;
-  }
-
   .gridCell {
     height: $cell-size;
     width: $cell-size;
     margin: 5px;
-    // border: 2px solid #ccc;
   }
 
   .cellContent {
@@ -38,14 +33,28 @@ $apple-size: 45px;
     }
   }
 
-  button {
-    cursor: pointer;
+  .footer {
+    width: 400px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
 
-    &:disabled {
-      cursor: default;
-      color: #ccc;
+    .controls {
+      button {
+        cursor: pointer;
+    
+        &:disabled {
+          cursor: default;
+          color: #ccc;
+        }
+      }
+    }
+
+    .status-display {
+
     }
   }
+
 
 }
 

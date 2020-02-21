@@ -46,13 +46,14 @@ export default class GameGrid extends Component {
         this.setState( {
             gameOver: true
         });
+        this.sendScore();
         clearInterval(this.interval);
-        alert('game over, score: ' + this.state.snakeCells.length);
-        this.resetGame();
         this.props.gameEnded();
+
     }
 
     startGame() {
+        this.resetGame();
         let isFirstRun = true;
         this.interval = setInterval(() => {
             if(isFirstRun) {
@@ -88,11 +89,13 @@ export default class GameGrid extends Component {
         return Utils.doCellsMatch(this.state.appleCell, {row: row, col: col})
     }
 
+    sendScore = () => this.props.getScoreCallback(this.state.snakeCells.length);
+
     createGrid() {
-        let table = []
+        let rows = []
 
         for (let i = 0; i < this.props.rows; i++) {
-            let children = [];
+            let row = [];
             for (let j = 0; j < this.props.cols; j++) {
                 let cellType;
                 let position;
@@ -105,7 +108,7 @@ export default class GameGrid extends Component {
                 }
 
                 const keyString = i + '' + j;
-                children.push(
+                row.push(
                     <td className='gridCell' key={keyString}>
                         <GridCell 
                             type={cellType} 
@@ -114,9 +117,9 @@ export default class GameGrid extends Component {
                     </td>
                 );
             }
-            table.push(<tr key={i}>{children}</tr>)
+            rows.push(<tr key={i}>{row}</tr>)
         }
-        return table;
+        return rows;
     }
 
     render() {
