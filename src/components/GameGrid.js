@@ -38,7 +38,8 @@ export default class GameGrid extends Component {
         this.snakeModel.reset();
         this.setState({
             snakeCells: [],
-            appleCell: {}
+            appleCell: {},
+            gameOver: false
         });
     }
 
@@ -113,6 +114,7 @@ export default class GameGrid extends Component {
                         <GridCell 
                             type={cellType} 
                             position={position}
+                            gameOver={this.state.gameOver}
                         />
                     </td>
                 );
