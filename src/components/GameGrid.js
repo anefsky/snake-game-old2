@@ -114,6 +114,7 @@ export default class GameGrid extends Component {
                             type={cellType} 
                             position={position}
                             gameOver={this.state.gameOver}
+                            direction={this.snakeModel.getDirection()}
                         />
                     </td>
                 );

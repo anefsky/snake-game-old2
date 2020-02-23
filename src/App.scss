@@ -1,6 +1,20 @@
 $cell-size: 50px;
 $apple-size: 45px;
 
+@mixin snakeEye {
+  content: "";
+  position: absolute;
+  top: 2px;
+  height: 5px;
+  width: 5px;
+  background-color: black;
+}
+
+@mixin snakeEyeGameOver {
+  @include snakeEye;
+  background-color: red;;
+}
+
 .app {
   width: 100%;
   display: flex;
@@ -21,10 +35,38 @@ $apple-size: 45px;
   .cellContent {
     width: 100%;
     height: 100%;
+    position: relative;
 
     &.snake {
       background-color: green;
-    }
+      &.head {
+        &:after {
+          @include snakeEye;
+          left: 10px;
+        }
+        &:before {
+          @include snakeEye;
+          right: 10px;
+        }
+        &.gameOver {
+          &:after {
+            @include snakeEyeGameOver;
+          }
+          &:before {
+            @include snakeEyeGameOver;
+          }
+        }
+        &.ArrowDown {
+          transform: rotate(180deg);
+        }
+        &.ArrowLeft {
+          transform: rotate(270deg);
+        }
+        &.ArrowRight {
+          transform: rotate(90deg);
+        }
+      }
+   }
 
     &.apple {
       background-image: url('images/apple.png');

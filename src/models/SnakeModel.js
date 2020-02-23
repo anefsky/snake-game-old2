@@ -30,6 +30,10 @@ export default class SnakeModel {
         }
     }
 
+    getDirection() {
+        return this.direction;
+    }
+
     getSnakeSegmentPosition(row, col) {
         for(let i = 0; i < this.snakeCells.length; i++) {
             if(this.snakeCells[i].row === row && this.snakeCells[i].col === col) {
