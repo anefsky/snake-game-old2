@@ -4,7 +4,7 @@ export default class GridCell extends Component {
     render() {
         const style = {opacity: (Math.max( 40, (100 - (10 * this.props.position)))) / 100};
 
-       let cellPositionClass = '';
+        let cellPositionClass = '';
         let gameOverStatusClass = '';
 
         if(this.props.type === 'snake' && this.props.position === 0) {
