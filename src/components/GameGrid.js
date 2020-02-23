@@ -31,7 +31,7 @@ export default class GameGrid extends Component {
 
     changeDirection(event) {
         event.preventDefault();  // stop grid from repositioning
-        this.snakeModel.setDirection(event.code);
+        this.snakeModel.setDirection(event.key);
     }
 
     resetGame() {
