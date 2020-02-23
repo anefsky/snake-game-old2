@@ -99,13 +99,12 @@ export default class GameGrid extends Component {
             let row = [];
             for (let j = 0; j < this.props.cols; j++) {
                 let cellType;
-                let position;
+                let position = 0;
                 if(this.isSnakeCell(i, j)) {
                     cellType = 'snake';
                     position = this.snakeModel.getSnakeSegmentPosition(i, j);
                 } else if (this.isAppleCell(i, j)) {
                     cellType = 'apple';
-                    position = 0;
                 }
 
                 const keyString = i + '' + j;
