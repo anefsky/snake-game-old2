@@ -1,3 +1,4 @@
+
 $cell-size: 50px;
 $apple-size: 45px;
 
@@ -16,7 +17,7 @@ $apple-size: 45px;
   background-color: red;;
 }
 
-.app {
+.app { 
   width: 100%;
   display: flex;
   align-items: center;
@@ -31,6 +32,12 @@ $apple-size: 45px;
     height: $cell-size;
     width: $cell-size;
     margin: 5px;
+    @media only screen and (max-width: 600px) {
+      height: $cell-size  / 2;
+      width: $cell-size / 2;
+      margin: 2px;
+    }
+
   }
 
   .cellContent {
@@ -73,6 +80,9 @@ $apple-size: 45px;
       background-image: url('images/apple.png');
       background-repeat: no-repeat;
       background-size: $apple-size $apple-size;
+      @media only screen and (max-width: 600px) {
+        background-size: $apple-size / 2, $apple-size / 2;
+      }
     }
   }
 
