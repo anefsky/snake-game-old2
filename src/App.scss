@@ -1,6 +1,7 @@
 
 $cell-size: 50px;
 $apple-size: 45px;
+$phone-shrink-factor: 1.5;
 
 @mixin snakeEye {
   content: "";
@@ -33,8 +34,8 @@ $apple-size: 45px;
     width: $cell-size;
     margin: 5px;
     @media only screen and (max-width: 600px) {
-      height: $cell-size  / 2;
-      width: $cell-size / 2;
+      height: $cell-size  / $phone-shrink-factor;
+      width: $cell-size / $phone-shrink-factor;
       margin: 2px;
     }
 
@@ -51,10 +52,16 @@ $apple-size: 45px;
         &:after {
           @include snakeEye;
           left: 10px;
+          @media only screen and (max-width: 600px) {
+            visibility: hidden;
+          }
         }
         &:before {
           @include snakeEye;
           right: 10px;
+          @media only screen and (max-width: 600px) {
+            visibility: hidden;
+          }
         }
         &.gameOver {
           &:after {
@@ -81,7 +88,8 @@ $apple-size: 45px;
       background-repeat: no-repeat;
       background-size: $apple-size $apple-size;
       @media only screen and (max-width: 600px) {
-        background-size: $apple-size / 2, $apple-size / 2;
+        background-size: $apple-size / $phone-shrink-factor, 
+          $apple-size / $phone-shrink-factor;
       }
     }
   }
