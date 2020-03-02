@@ -112,6 +112,24 @@ $phone-shrink-factor: 1.5;
     }
   }
 
+  .direction-buttons {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 32px;
+    button {
+      width: 50px;
+      height: 50px;
+    }
+    .center-buttons {
+      width: 200px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
 
 }
 

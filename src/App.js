@@ -4,6 +4,7 @@ import './App.scss';
 import GameGrid from './components/GameGrid';
 import Controls from './components/Controls';
 import StatusDisplay from './components/StatusDisplay';
+import DirectionButtons from './components/DirectionButtons';
 
 class App extends Component {
 
@@ -36,6 +37,10 @@ class App extends Component {
     });
   }
 
+  setDirection = (dir) => {
+    console.log('in setDirection, dir: ', dir);
+  }
+
   render() {
     return (
       <div className="app">
@@ -59,6 +64,10 @@ class App extends Component {
           >
           </StatusDisplay>
         </footer>
+        <DirectionButtons
+          setDirection={this.setDirection}
+        >
+        </DirectionButtons>
       </div>
     );
   }
