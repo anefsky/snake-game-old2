@@ -50,7 +50,7 @@ export default class SnakeModel {
 
     setInitialCell() {
         const initDirection = Utils.chooseRandomString(['up', 'down', 'left', 'right']);
-         this.setDirection(initDirection);
+        this.setDirection(initDirection);
     
         this.headCell = {
             row: Utils.getRandomIndex(this.rowNum / 3, this.rowNum * 2 / 3),

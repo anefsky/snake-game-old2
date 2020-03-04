@@ -20,6 +20,10 @@ class App extends Component {
       score: 0,
       snakeDirection: ''
     };
+
+    this.changeDirectionFromKeyboard = this.changeDirectionFromKeyboard.bind(this);
+    document.onkeydown = this.changeDirectionFromKeyboard;
+ 
   }
 
   getScoreFunction = (score) => {
@@ -42,6 +46,17 @@ class App extends Component {
     this.setState({snakeDirection: dir});
   }
 
+  changeDirectionFromKeyboard(event) {
+      event.preventDefault();  // stop grid from repositioning
+      const keyEventToActionMap = {
+        ArrowUp: 'up',
+        ArrowDown: 'down',
+        ArrowLeft: 'left',
+        ArrowRight: 'right'
+      }
+      this.setDirection(keyEventToActionMap[event.key]);
+  }
+  
   render() {
     return (
       <div className="app">
