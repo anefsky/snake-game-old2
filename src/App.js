@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
+import Utils from './services/utils';
 
 import GameGrid from './components/GameGrid';
 import Controls from './components/Controls';
@@ -18,7 +19,7 @@ class App extends Component {
     this.state = {
       gameStarted: false,
       score: 0,
-      snakeDirection: ''
+      snakeDirection: Utils.chooseRandomString(['up', 'down', 'left', 'right'])
     };
 
     this.changeDirectionFromKeyboard = this.changeDirectionFromKeyboard.bind(this);
