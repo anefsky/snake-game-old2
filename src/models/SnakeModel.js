@@ -25,9 +25,7 @@ export default class SnakeModel {
    }
 
     setDirection(direction) {
-        if((['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].indexOf(direction)) !== -1) {
-            this.direction = direction;
-        }
+        this.direction = direction;
     }
 
     getDirection() {
@@ -51,8 +49,8 @@ export default class SnakeModel {
     }
 
     setInitialCell() {
-        const initDirection = Utils.chooseRandomString(['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight']);
-        this.setDirection(initDirection);
+        const initDirection = Utils.chooseRandomString(['up', 'down', 'left', 'right']);
+         this.setDirection(initDirection);
     
         this.headCell = {
             row: Utils.getRandomIndex(this.rowNum / 3, this.rowNum * 2 / 3),
@@ -85,10 +83,10 @@ export default class SnakeModel {
         let row = this.snakeCells[0].row;
         let col = this.snakeCells[0].col;
         switch (this.direction) {
-            case 'ArrowUp': row--; break;
-            case 'ArrowDown': row++; break;
-            case 'ArrowLeft': col--; break;
-            case 'ArrowRight': col++; break;
+            case 'up': row--; break;
+            case 'down': row++; break;
+            case 'left': col--; break;
+            case 'right': col++; break;
             default: break;
         }
 

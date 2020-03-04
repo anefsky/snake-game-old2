@@ -11,8 +11,8 @@ export default class GameGrid extends Component {
     constructor(props) {
         super(props);
 
-        this.changeDirection = this.changeDirection.bind(this);
-        document.onkeydown = this.changeDirection;
+        // this.changeDirection = this.changeDirection.bind(this);
+        // document.onkeydown = this.changeDirection;
 
         this.snakeModel = new SnakeModel(this.props.rows, this.props.cols);
 
@@ -26,12 +26,17 @@ export default class GameGrid extends Component {
     componentDidUpdate(prevProps) {
         if(!prevProps.isGameStarted && this.props.isGameStarted) {
             this.startGame();
-        } 
+        }
+        this.changeSnakeDirection(this.props.snakeDirection); 
     }
 
-    changeDirection(event) {
-        event.preventDefault();  // stop grid from repositioning
-        this.snakeModel.setDirection(event.key);
+    // changeDirection(event) {
+    //     event.preventDefault();  // stop grid from repositioning
+    //     this.snakeModel.setDirection(event.key);
+    // }
+
+    changeSnakeDirection(direction) {
+        this.snakeModel.setDirection(direction);
     }
 
     resetGame() {
@@ -114,7 +119,7 @@ export default class GameGrid extends Component {
                             type={cellType} 
                             position={position}
                             gameOver={this.state.gameOver}
-                            direction={this.snakeModel.getDirection()}
+                            direction={this.props.snakeDirection}
                         />
                     </td>
                 );

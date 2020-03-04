@@ -17,7 +17,8 @@ class App extends Component {
     super();
     this.state = {
       gameStarted: false,
-      score: 0
+      score: 0,
+      snakeDirection: ''
     };
   }
 
@@ -38,7 +39,7 @@ class App extends Component {
   }
 
   setDirection = (dir) => {
-    console.log('in setDirection, dir: ', dir);
+    this.setState({snakeDirection: dir});
   }
 
   render() {
@@ -51,6 +52,7 @@ class App extends Component {
           isGameStarted={this.state.gameStarted}
           gameEnded={this.doGameEnded}
           getScoreCallback={this.getScoreFunction}
+          snakeDirection={this.state.snakeDirection}
         />
         <footer className='footer'>
           <Controls
