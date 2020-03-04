@@ -4,9 +4,6 @@ import React, {Component} from 'react';
 
 class DirectionButtons extends Component {
 
-    constructor(props) {
-        super(props);
-    }
 
     goUp = () => this.props.setDirection('up');
     goDown = () => this.props.setDirection('down');
@@ -28,7 +25,7 @@ class DirectionButtons extends Component {
                     >&rarr;
                     </button>
                     </div>
-                <button  onClick={this.goLeft}
+                <button  onClick={this.goDown}
                 >&darr;
                 </button>
             </div>
